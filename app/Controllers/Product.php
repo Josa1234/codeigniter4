@@ -22,4 +22,31 @@ class Product extends BaseController
         ];
         echo view('layout/v_wrapper', $data);
     }
+
+    public function tambah()
+    {
+        $data = [
+            'title' => 'Tambah Data Product',
+            'isi' => 'product/v_tambah'
+        ];
+        echo view('layout/v_wrapper', $data);
+    }
+
+    public function save()
+    {
+        $data = [
+            'product_name' => $this->request->getPost('product_name'),
+            'product_description' => $this->request->getPost('product_description'),
+        ];
+        $this->ProductModel->insert_product($data);
+        session()->setFlashdata('success', 'Data berhasil ditambahkan');
+        return redirect()->to(base_url('product'));
+    }
+
+    public function delete($product_id)
+    {
+        $this->ProductModel->delete_product($product_id);
+        session()->setFlashdata('success', 'Data berhasil dihapus !!');
+        return redirect()->to(base_url('product'));
+    }
 }

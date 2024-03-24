@@ -10,4 +10,14 @@ class SupplierModel extends Model
     {
         return $this->db->table('supplier')->get()->getResultArray();
     }
+
+    public function insert_supplier($data)
+    {
+        return $this->db->table('supplier')->insert($data);
+    }
+
+    public function delete_supplier($supplier_id)
+    {
+        return $this->db->table('supplier')->delete(array('supplier_id' => $supplier_id));
+    }
 }

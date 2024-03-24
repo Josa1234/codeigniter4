@@ -1,4 +1,11 @@
 <div class="col-sm-12">
+    <a href="<?= base_url('supplier/tambah'); ?>" class="btn btn-warning">Tambah</a><br><br>
+    <?php
+    if (!empty(session()->getFlashdata('success'))) { ?>
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
+    <?php } ?>
     <table id="example1" class="table table-bordered table-responsive">
         <thead>
             <tr>
@@ -16,10 +23,10 @@
                     <td><?= $no++; ?></td>
                     <td><?= $value['supplier_name']; ?></td>
                     <td><?= $value['supplier_description']; ?></td>
-                    <td><?= $value['address']; ?></td>
+                    <td><?= $value['supplier_address']; ?></td>
                     <td>
                         <a href="#" class="btn btn-warning">Edit</a>
-                        <a href="#" class="btn btn-danger">Hapus</a>
+                        <a href="<?= base_url('supplier/delete/' . $value['supplier_id']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus ?...')">Hapus</a>
                     </td>
                 </tr>
             <?php } ?>
