@@ -16,6 +16,16 @@ class ProductModel extends Model
         return $this->db->table('product')->insert($data);
     }
 
+    public function edit_product($product_id)
+    {
+        return $this->db->table('product')->where('product_id', $product_id)->get()->getRowArray();
+    }
+
+    public function update_product($data, $product_id)
+    {
+        return $this->db->table('product')->update($data, array('product_id' => $product_id));
+    }
+
     public function delete_product($product_id)
     {
         return $this->db->table('product')->delete(array('product_id' => $product_id));

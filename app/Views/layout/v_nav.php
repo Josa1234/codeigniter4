@@ -52,7 +52,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('penjualan'); ?>" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Data Penjualan

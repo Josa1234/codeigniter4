@@ -43,6 +43,27 @@ class Product extends BaseController
         return redirect()->to(base_url('product'));
     }
 
+    public function edit($product_id)
+    {
+        $data = [
+            'title' => 'Edit Data Product',
+            'product' => $this->ProductModel->edit_product($product_id),
+            'isi' => 'product/v_edit'
+        ];
+        echo view('layout/v_wrapper', $data);
+    }
+
+    public function update($product_id)
+    {
+        $data = [
+            'product_name' => $this->request->getPost('product_name'),
+            'product_description' => $this->request->getPost('product_description'),
+        ];
+        $this->ProductModel->update_product($data, $product_id);
+        session()->setFlashdata('success', 'Data berhasil di update');
+        return redirect()->to(base_url('product'));
+    }
+
     public function delete($product_id)
     {
         $this->ProductModel->delete_product($product_id);

@@ -24,7 +24,7 @@
                     <td><?= $value['product_name']; ?></td>
                     <td><?= $value['product_description']; ?></td>
                     <td>
-                        <a href="#" class="btn btn-warning">Edit</a>
+                        <a href="<?= base_url('product/edit/' . $value['product_id']) ?>" class="btn btn-warning">Edit</a>
                         <a href="<?= base_url('product/delete/' . $value['product_id']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Yakin Ingin Menghapus ?...')">Hapus</a>
                     </td>
                 </tr>
